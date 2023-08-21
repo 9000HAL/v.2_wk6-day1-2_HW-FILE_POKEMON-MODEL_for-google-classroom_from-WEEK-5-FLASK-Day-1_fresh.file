@@ -12,6 +12,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Get Results!</button>
 </form>
+
 {% if pokemon_data %}
     <div class="my-3">
         <img src="{{ pokemon_data.front_shiny_sprite }}" alt="{{ pokemon_data.name }} sprite">
@@ -36,20 +37,15 @@
             </tr>
         </tbody>
     </table>
+
+    <!-- Adding the "Catch" button here -->
+    <form method="POST" action="{{ url_for('main.catch_pokemon') }}">
+        <input type="hidden" name="pokemon_name" value="{{ pokemon_data.name }}">
+        <input type="hidden" name="image_url" value="{{ pokemon_data.front_shiny_sprite }}">
+        <button type="submit" class="btn btn-success">Catch this Pokémon!</button>
+    </form>
 {% endif %}
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
